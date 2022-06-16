@@ -5,30 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <!-- header with highscores and time countdown (will disappear when high scores are displayed) -->
-    <header>
+    <!-- header with highscores and time countdown (will disappear when high score section is displayed) -->
+    <header id="header">
         <div id="viewHighScores">View high scores</div>
         <div id="countdown">Time:</div>
     </header>
     <main>
         <!-- intro to quiz section -->
-        <section>
+        <section id="introContainer">
             <div id="codeQuizTitle"></div>
             <div id="codeQuizDescription"></div>
-            <button id="startButton"></button>
+            <button id="start-btn">Start</button>
         </section>
 
         <!-- question section -->
-        <section>
-            <div id="question"></div>
-            <div id="multipleChoice"></div>
-            <div id="result"></div>
+        <section id="quizContainer" class="hide">
+            <h2 id="question">Question</h2>
+            <div id="answer-buttons">
+                <button class="btn">Answer a</button><br>
+                <button class="btn">Answer b</button><br>
+                <button class="btn">Answer c</button><br>
+                <button class="btn">Answer d</button><br>
+            </div>
         </section>
 
         <!-- score section -->
-        <section>
+        <section id="scoreContainer" class="hide">
             <div id="allDone"></div>
             <div id="scoreSentence"></div>
             <form>
@@ -39,11 +44,13 @@
         </section>
 
         <!-- high score section -->
-        <section>
+        <section id="highScoreContainer" class="hide">
             <div id="highScores"></div>
             <button id="goBack"></button>
             <button id="clearScores"></button>
         </section>
     </main>
+
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
