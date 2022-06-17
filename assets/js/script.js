@@ -36,27 +36,36 @@ let questions = [
     }
 ];
 
-var startButton = document.getElementById('start-btn')
-var quizContainerEl = document.getElementById('quizContainer')
-var questionEl = document.getElementById('question')
-var answerButtonEl = document.getElementById('answer-buttons')
+var startButton = document.getElementById('start-btn');
+var quizContainerEl = document.getElementById('quizContainer');
+var questionEl = document.getElementById('question');
+var answerButtonEl = document.getElementById('answer-buttons');
+var introContainerEl = document.getElementById('introContainer');
 
 let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
 
+function setNextQuestion() {
+    resetState()
+    showQuestion(shuffledQuestions[currentQuestionIndex])
+}
+
 function startGame() {
-    console.log('Started')
+    var counter = 75;
+    setInterval( function (){
+        counter--;
+        if (counter >= 0){
+            id = document.getElementById('countdown');
+            id.innerText = "Time: " + counter
+        }
+    }, 1000);
     startButton.classList.add('hide')
     shuffledQuestions = questions.sort(() => Math.random() -.5)
     currentQuestionIndex = 0 
     quizContainerEl.classList.remove('hide')
+    introContainerEl.classList.add('hide')
     setNextQuestion()
-}
-
-function setNextQuestion() {
-    resetState()
-    showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
 function showQuestion(question) {
@@ -64,11 +73,11 @@ function showQuestion(question) {
     question.answer.forEach(answer => {
         var button = document.createElement('button')
         button.innerText = answer.text
-        button.classList.add('btn')
-        if (answer.correct) {
-            button.dataset.correct = answer.correct
-        }
-        button.addEventListener('click', selectAnswer)
+        // button.classList.add('btn')
+        // if (answer.correct) {
+        //     button.dataset.correct = answer.correct
+        // }
+        // button.addEventListener('click', selectAnswer)
         answerButtonEl.appendChild(button)
     })
 }

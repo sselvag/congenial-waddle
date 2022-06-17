@@ -10,32 +10,27 @@
 <body>
     <!-- header with highscores and time countdown (will disappear when high score section is displayed) -->
     <header id="header">
-        <div id="viewHighScores">View high scores</div>
-        <div id="countdown">Time:</div>
+        <p id="viewHighScores">View high scores</p>
+        <p id="countdown">Time: 75</p>
     </header>
     <main>
         <!-- intro to quiz section -->
-        <section id="introContainer">
-            <div id="codeQuizTitle"></div>
-            <div id="codeQuizDescription"></div>
-            <button id="start-btn">Start</button>
+        <section id="introContainer" class="container">
+            <h1 id="codeQuizTitle">Coding Quiz Challenge</h1>
+            <p id="codeQuizDescription">Try to answer he following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <button id="start-btn">Start Quiz</button>
         </section>
 
         <!-- question section -->
-        <section id="quizContainer" class="hide">
-            <h2 id="question">Question</h2>
-            <div id="answer-buttons">
-                <button class="btn">Answer a</button><br>
-                <button class="btn">Answer b</button><br>
-                <button class="btn">Answer c</button><br>
-                <button class="btn">Answer d</button><br>
-            </div>
+        <section id="quizContainer" class="hide container">
+            <h2 id="question"></h2>
+            <div id="answer-buttons"></div>
         </section>
 
         <!-- score section -->
-        <section id="scoreContainer" class="hide">
-            <div id="allDone"></div>
-            <div id="scoreSentence"></div>
+        <section id="scoreContainer" class="hide container">
+            <h2 id="allDone"></h2>
+            <h3 id="scoreSentence"></h3>
             <form>
                 <label>Enter initials:</label>
                 <input type="text" id="initials">
@@ -44,8 +39,8 @@
         </section>
 
         <!-- high score section -->
-        <section id="highScoreContainer" class="hide">
-            <div id="highScores"></div>
+        <section id="highScoreContainer" class="hide container">
+            <h2 id="highScores"></h2>
             <button id="goBack"></button>
             <button id="clearScores"></button>
         </section>
