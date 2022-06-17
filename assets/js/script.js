@@ -80,7 +80,7 @@ function checkAnswers (event) {
         counter = counter - penalty;
         correctStatementEl.textContent = "Incorrect!";
     }
-    questionIndex++;
+    // questionIndex++;
 };
 
 // function gameFinished() {}
