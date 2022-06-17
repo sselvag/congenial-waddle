@@ -27,6 +27,7 @@ var questions = [
 ];
 var questionIndex = 0;
 var score = 0;
+var counter = 75;
 var penalty = 10;
 
 var startButton = document.getElementById('start-btn');
@@ -35,13 +36,13 @@ var questionEl = document.getElementById('question');
 var answerButtonEl = document.getElementById('answer-buttons');
 var introContainerEl = document.getElementById('introContainer');
 var correctStatementEl = document.getElementById('correctStatement');
+var incorrectStatementEl = document.getElementById('incorrectStatement');
 
 startButton.addEventListener('click', startGame)
 
 function startGame() {
     quizContainerEl.classList.remove('hide');
     introContainerEl.classList.add('hide');
-    var counter = 75;
     setInterval( function (){
         counter--;
         if (counter >= 0){
@@ -55,8 +56,10 @@ function startGame() {
 };
 
 function showQuestion(questionIndex) {
-    questionEl.innerText = '';
-    answerButtonEl.innerText = '';
+    questionEl.textContent = '';
+    answerButtonEl.textContent = '';
+    // correctStatementEl.textContent = '';
+    // incorrectStatementEl.textContent = '';
     for (var i=0; i < questions.length; i++) {
         var quizQuestion = questions[questionIndex].question;
         var multipleChoice = questions[questionIndex].option;
@@ -75,12 +78,17 @@ function checkAnswers (event) {
     var element = event.target;
     if (element.textContent == questions[questionIndex].answer) {
         score++;
-        correctStatementEl.textContent = "Correct!"
+        correctStatementEl.textContent = "Correct!";
+        setTimeout(() => {correctStatementEl.style.display = 'none'}, 1000);
     } else {
         counter = counter - penalty;
-        correctStatementEl.textContent = "Incorrect!";
+        incorrectStatementEl.textContent = "Incorrect!";
+        setTimeout(() => {incorrectStatementEl.style.display = 'none'}, 1000);
     }
-    // questionIndex++;
+    questionIndex++;
+    showQuestion(questionIndex)
 };
+
+
 
 // function gameFinished() {}
