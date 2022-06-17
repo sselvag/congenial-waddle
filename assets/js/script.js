@@ -26,6 +26,8 @@ var questions = [
     }
 ];
 var questionIndex = 0;
+var score = 0;
+var penalty = 10;
 
 var startButton = document.getElementById('start-btn');
 var quizContainerEl = document.getElementById('quizContainer');
@@ -65,13 +67,20 @@ function showQuestion(questionIndex) {
         optionButtons.textContent = newItem;
         questionEl.appendChild(answerButtonEl);
         answerButtonEl.appendChild(optionButtons);
-        optionButtons.addEventListener("click", (compare));
+        optionButtons.addEventListener("click", (checkAnswers));
     })
 };
 
+function checkAnswers (event) {
+    var element = event.target;
+    if (element.textContent == questions[questionIndex].answer) {
+        score++;
+        correctStatementEl.textContent = "Correct!"
+    } else {
+        counter = counter - penalty;
+        correctStatementEl.textContent = "Incorrect!";
+    }
+    questionIndex++;
+};
 
-
-
-
-
-
+// function gameFinished() {}
