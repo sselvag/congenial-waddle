@@ -37,6 +37,8 @@ var answerButtonEl = document.getElementById('answer-buttons');
 var introContainerEl = document.getElementById('introContainer');
 var correctStatementEl = document.getElementById('correctStatement');
 var incorrectStatementEl = document.getElementById('incorrectStatement');
+var scoreContainerEl = document.getElementById('scoreContainer');
+var scoreSentenceEl = document.getElementById('scoreSentence');
 
 startButton.addEventListener('click', startGame)
 
@@ -48,9 +50,9 @@ function startGame() {
         if (counter >= 0){
             countdown.innerText = "Time: " + counter
         }
-        // if (counter <=0){
-        //     gameFinished();
-        // }
+        if (counter === 0){
+            gameFinished();
+        }
     }, 1000);
     showQuestion(questionIndex)
 };
@@ -58,8 +60,6 @@ function startGame() {
 function showQuestion(questionIndex) {
     questionEl.textContent = '';
     answerButtonEl.textContent = '';
-    // correctStatementEl.textContent = '';
-    // incorrectStatementEl.textContent = '';
     for (var i=0; i < questions.length; i++) {
         var quizQuestion = questions[questionIndex].question;
         var multipleChoice = questions[questionIndex].option;
@@ -78,17 +78,24 @@ function checkAnswers (event) {
     var element = event.target;
     if (element.textContent == questions[questionIndex].answer) {
         score++;
-        correctStatementEl.textContent = "Correct!";
-        setTimeout(() => {correctStatementEl.style.display = 'none'}, 1000);
+        // correctStatementEl.textContent = "Correct!";
+        // setTimeout(() => {correctStatementEl.style.display = 'none'}, 1000);
     } else {
         counter = counter - penalty;
-        incorrectStatementEl.textContent = "Incorrect!";
-        setTimeout(() => {incorrectStatementEl.style.display = 'none'}, 1000);
+        // incorrectStatementEl.textContent = "Incorrect!";
+        // setTimeout(() => {incorrectStatementEl.style.display = 'none'}, 1000);
     }
     questionIndex++;
-    showQuestion(questionIndex)
+    if (questionIndex >= questions.length) {
+        gameFinished();
+    } else {
+        showQuestion(questionIndex)
+    }
 };
 
-
-
-// function gameFinished() {}
+function gameFinished() {
+    console.log("finished")
+    quizContainerEl.classList.add('hide');
+    scoreContainerEl.classList.remove('hide');
+    scoreSentenceEl.innerText = "Your finial score is " + score + ".";
+};
