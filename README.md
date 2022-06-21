@@ -13,19 +13,23 @@ The following screenshots display different stages of the Code Quiz.
 
 Homepage:
 
-![Homepage Screenshot](/Challenge4/congenial-waddle/assets/images/homepage.png)
+![homepage](https://user-images.githubusercontent.com/64749332/174698426-5d94db02-8d4a-4a05-a81d-06779ad2ef39.png)
+
 
 Question:
 
-![Question Screenshot](/Challenge4/congenial-waddle/assets/images/question.png)
+![question](https://user-images.githubusercontent.com/64749332/174698456-adb3817a-531e-4a5b-a58e-b88ef71c7c46.png)
+
 
 Game Over:
 
-![Game Over Screenshot](/Challenge4/congenial-waddle/assets/images/gameover.png)
+![gameover](https://user-images.githubusercontent.com/64749332/174698488-8e1807a8-d46c-4816-a698-0b43ed27555b.png)
+
 
 View Scores:
 
-![View Scores Screenshot](/Challenge4/congenial-waddle/assets/images/viewscores.png)
+![viewscores](https://user-images.githubusercontent.com/64749332/174698504-086046c9-781b-4e70-8c8f-36fe65646912.png)
+
 
 
 
