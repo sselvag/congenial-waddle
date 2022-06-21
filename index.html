@@ -10,7 +10,6 @@
 <body>
     <!-- header with highscores and time countdown (will disappear when high score section is displayed) -->
     <header id="header">
-        <p id="viewHighScores">View high scores</p>
         <p id="countdown">Time: 75</p>
     </header>
     <main>
@@ -31,20 +30,21 @@
 
         <!-- score section -->
         <section id="scoreContainer" class="hide container">
-            <h2>All done!</h2>
+            <h2>Game Over!</h2>
             <h3 id="scoreSentence"></h3>
-            <form>
-                <label>Enter initials:</label>
-                <input type="text" id="initials">
-                <input type="submit" value="Submit">
+            <form id="form">
+                <label for="initials">Enter initials:</label>
+                <input type="text" name="initials" id="initials">
+                <input type="submit" value="Submit" id="submit-btn">
             </form>
+            <h5 id="errorMessage"></h5>
         </section>
 
         <!-- high score section -->
         <section id="highScoreContainer" class="hide container">
-            <h2 id="highScores"></h2>
-            <button id="goBack"></button>
-            <button id="clearScores"></button>
+            <h2 id="highScoresOuput"></h2>
+            <button id="goBack">Go Back</button>
+            <button id="clearScores">Clear high scores</button>
         </section>
     </main>
 

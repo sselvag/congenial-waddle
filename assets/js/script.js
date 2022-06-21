@@ -6,7 +6,7 @@ var questions = [
     },
     {
         question: "The condition in an if / else statement is enclosed with __________.",
-        option: ["quotes", "curly brackets", "parenthesis", "square brackets"],
+        option: ["quotes", "curly brackets", "paranthesis", "square brackets"],
         answer: "paranthesis"
     },
     {
@@ -39,6 +39,11 @@ var correctStatementEl = document.getElementById('correctStatement');
 var incorrectStatementEl = document.getElementById('incorrectStatement');
 var scoreContainerEl = document.getElementById('scoreContainer');
 var scoreSentenceEl = document.getElementById('scoreSentence');
+var submitButton = document.getElementById('submit-btn');
+var highScoreContainerEl = document.getElementById('highScoreContainer');
+var initialsInput = document.getElementById('initials');
+var error = document.getElementById('errorMessage');
+var highScoresOuput = document.getElementById('highScoresOuput');
 
 startButton.addEventListener('click', startGame)
 
@@ -50,11 +55,11 @@ function startGame() {
         if (counter >= 0){
             countdown.innerText = "Time: " + counter
         }
-        if (counter === 0){
+        if ((!questionIndex >= questions.length)&&(counter === 0)){
             gameFinished();
         }
     }, 1000);
-    showQuestion(questionIndex)
+    showQuestion(questionIndex);
 };
 
 function showQuestion(questionIndex) {
@@ -78,12 +83,8 @@ function checkAnswers (event) {
     var element = event.target;
     if (element.textContent == questions[questionIndex].answer) {
         score++;
-        // correctStatementEl.textContent = "Correct!";
-        // setTimeout(() => {correctStatementEl.style.display = 'none'}, 1000);
     } else {
         counter = counter - penalty;
-        // incorrectStatementEl.textContent = "Incorrect!";
-        // setTimeout(() => {incorrectStatementEl.style.display = 'none'}, 1000);
     }
     questionIndex++;
     if (questionIndex >= questions.length) {
@@ -93,9 +94,45 @@ function checkAnswers (event) {
     }
 };
 
+var form = document.getElementById("form");
+form.onsubmit = function(e) {
+    e.preventDefault();
+}
+
 function gameFinished() {
     console.log("finished")
     quizContainerEl.classList.add('hide');
     scoreContainerEl.classList.remove('hide');
+    countdown.classList.add('hide');
     scoreSentenceEl.innerText = "Your finial score is " + score + ".";
+
+}; 
+
+submitButton.onclick = function () {
+    var key = initialsInput.value;
+    localStorage.setItem(key, score);
+    highScoreBoard();
 };
+
+function highScoreBoard() {
+    scoreContainerEl.classList.add('hide');
+    highScoreContainerEl.classList.remove('hide');
+    for (let i=0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        var score = localStorage.getItem(key);
+        highScoresOuput.innerText += `${key}: ${score} \n`;
+    };
+    var clearButton = document.getElementById('clearScores');
+    var goBackButton = document.getElementById('goBack');
+    clearButton.addEventListener('click', clearScores);
+    goBackButton.addEventListener('click', restart);
+};
+
+function clearScores() {
+    localStorage.clear();
+    restart();
+}
+
+function restart() {
+    location.reload();
+}
