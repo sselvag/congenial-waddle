@@ -33,4 +33,4 @@ View Scores:
 
 
 
-Portfolio Link: https://sselvag.github.io/congenial-waddle/
+Deployed Application Link: https://sselvag.github.io/congenial-waddle/
